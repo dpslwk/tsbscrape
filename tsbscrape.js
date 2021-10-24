@@ -340,7 +340,7 @@ function matchTransferAccount(description) {
     'REDWOOD LEGAL': 'Expenses:Professional Fees:Legal Fees',
     'CONFETTI NEW': 'Expenses:Teams:Trustees Misc',
     'BOC MANCHESTER': 'Expenses:BOC Gas',
-    'NOTTM CITY COUNC': 'Expenses:Utilities:Council Tax',
+    'NOTTM CITY COUNC': 'Expenses:Utilities:Business Rates',
     'PLANER INDUCTION': 'Income:Inductions:Planer Thicknesser',
     'BIZSPACE REFERENCE': 'Expenses:Bizspace Rent:F6',
     'BIZSPACE LIMITED REFERENCE': 'Expenses:Bizspace Rent:F6',
