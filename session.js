@@ -90,6 +90,13 @@ class Session {
   async ensureLoggedIn() {
     // Check that we're looking at the logged in homepage and throw an
     // error if we aren't.
+    try {
+      await u.wait(this.page, '#experienceatfoot > div > div.button_continue.buttonTop.pull-right > div > button');
+      await u.click(this.page, '#experienceatfoot > div > div.button_continue.buttonTop.pull-right > div > button');
+    } catch (err) {
+      //
+    }
+
     await u.wait(this.page, 'button#lnkCustomerLogoff');
     this.logged_in = true;
   }
@@ -159,6 +166,8 @@ class Session {
 
     client.on('message', function (topic, payload) {
       // no need to match the topic since we only subscribe to one
+
+      // nh/nexmo/inbound {"msisdn":"447786865330","to":"447451289557","messageId":"17000002A882066F","text":"171080","type":"text","keyword":"171080","api-key":"34f64b65","message-timestamp":"2021-03-10 09:10:09"}
 
       // payload is Buffer
       // console.log(payload.toString());
