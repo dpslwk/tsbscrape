@@ -107,7 +107,7 @@ class Session {
     await u.wait(this.page, 'span[translate-values="{charZPos : chars.charZPos}"]');
 
     await u.fillFields(this.page, {
-      '#credentialsPublicBiz > div.row.ng-scope > div.col-xs-12 > form > div:nth-child(1) > div > div > div > div > proteo-ui-form-group > div > ng-transclude > proteo-ui-form-control > div > ng-transclude > input': credentials['password'],
+      '#loginPassword': credentials['password'],
     });
 
     const xText = await this.page.$eval('span[translate-values="{charXPos : chars.charXPos}"]', el => el.textContent);
