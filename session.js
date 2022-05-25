@@ -117,9 +117,15 @@ class Session {
     const yInt = parseInt(yText.split(" ")[1][0])-1
     const zInt = parseInt(zText.split(" ")[1][0])-1
 
-    await u.selectOptionByValue(this.page, '#charXPos', credentials.memInfo.charAt(xInt));
-    await u.selectOptionByValue(this.page, '#charYPos', credentials.memInfo.charAt(yInt));
-    await u.selectOptionByValue(this.page, '#charZPos', credentials.memInfo.charAt(zInt));
+    await u.fillFields(this.page, {
+      '#charXPos': credentials.memInfo.charAt(xInt),
+      '#charYPos': credentials.memInfo.charAt(yInt),
+      '#charZPos': credentials.memInfo.charAt(zInt),
+    });
+
+    // await u.selectOptionByValue(this.page, '#charXPos', credentials.memInfo.charAt(xInt));
+    // await u.selectOptionByValue(this.page, '#charYPos', credentials.memInfo.charAt(yInt));
+    // await u.selectOptionByValue(this.page, '#charZPos', credentials.memInfo.charAt(zInt));
 
     await u.click(this.page, 'button[ng-click="submit(memorableInformationForm)"]');
 
