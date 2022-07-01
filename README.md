@@ -1,6 +1,6 @@
 TSBscrape v2.0
 ==============
-Yet again I've completely hacked Russ's great work to use with TSB businness accounts for Nottinghack
+Yet again I've completely hacked Russ's great work to use with TSB business accounts for Nottinghack
 
 
 Usage: tsbscrape

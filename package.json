@@ -19,17 +19,17 @@
   },
   "homepage": "https://github.com/dpslwk/barclayscrape#readme",
   "dependencies": {
-    "axios": "^0.19.2",
-    "axios-oauth-client": "^1.3.0",
+    "axios": "^0.27.2",
+    "axios-oauth-client": "^1.5.0",
     "axios-token-interceptor": "^0.1.0",
     "commander": "^2.20.3",
     "configstore": "^4.0.0",
     "log-timestamp": "^0.3.0",
-    "mqtt": "^4.1.0",
-    "puppeteer": "^1.20.0",
+    "mqtt": "^4.3.7",
+    "puppeteer": "^15.3.0",
     "python-shell": "^1.0.8",
     "syncprompt": "^2.0.0",
-    "wait-queue": "^1.1.3"
+    "wait-queue": "^1.1.4"
   },
   "engines": {
     "node": ">=10.3.0"

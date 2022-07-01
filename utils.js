@@ -1,3 +1,7 @@
+const util = require('util');
+const fs = require('fs');
+const fs_writeFile = util.promisify(fs.writeFile);
+
 // Look for a warning on the page and raise it as an error.
 async function raiseWarning(page, action, selector) {
   const warning = await page.$('.notification--warning');
@@ -23,6 +27,8 @@ exports.click = async (page, selector) => {
 
     const screenshotFile = './click-error.png';
     await page.screenshot({path: screenshotFile, fullPage: true});
+    const html = await page.content();
+    await fs_writeFile('./click-error.html', html);
     throw `Error when clicking ${selector} on URL ${page.url()}: ${err}`;
   }
 };
@@ -30,7 +36,7 @@ exports.click = async (page, selector) => {
 exports.fillFields = async (page, form) => {
   // Disappointingly, you can't type into multiple fields simultaneously.
   for (let key of Object.keys(form)) {
-    await page.type(key, form[key]);
+    await page.type(key, form[key], { delay: 100 });
   }
 };
 
@@ -41,12 +47,14 @@ exports.getAttribute = (page, element, attribute) => {
 // Wait for a selector to become visible, and issue a nice error if it doesn't.
 exports.wait = async (page, selector) => {
   try {
-    await page.waitFor(selector, {timeout: 30000});
+    await page.waitForSelector(selector, {timeout: 30000});
   } catch (err) {
     raiseWarning(page, 'fetching', selector);
 
     const screenshotFile = './error.png';
     await page.screenshot({path: screenshotFile, fullPage: true});
+    const html = await page.content();
+    await fs_writeFile('./error.html', html);
     throw `Couldn't find selector "${selector}" on page ${page.url()}. Screenshot saved to ${screenshotFile}.`;
   }
 };
@@ -72,6 +80,8 @@ exports.selectOptionByValue = async (page, selector, valueToMatch) => {
 
     const screenshotFile = './error.png';
     await page.screenshot({path: screenshotFile});
+    const html = await page.content();
+    await fs_writeFile('./error.html', html);
     throw `Couldn't find selector "${selector}" on page ${page.url()}. Screenshot saved to ${screenshotFile}.`;
   }
 };
