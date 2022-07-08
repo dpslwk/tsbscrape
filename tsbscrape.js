@@ -52,6 +52,7 @@ program
   .description('Fetch latest transactions and upload to hms2')
   .option('-b, --bypassssl', 'Bypass ssl checks.')
   .option('-g, --gnucash', 'Also import records into GnuCash')
+  .option('-p, --healthcheck', 'Ping Healthchecks.io on completion')
   .action(async (options) => {
     console.log('hms2_upload');
     if (options.bypassssl) {
@@ -163,6 +164,10 @@ program
           }
         }
       }
+
+      if (options.healthchecks) {
+        healthchecks();
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -174,6 +179,7 @@ program
   .command('get_csv <out_path>')
   .description('Fetch .csv files for all accounts into out_path')
   .option('-m, --match', 'Include Transfer Account matches in csv output.')
+  .option('-p, --healthcheck', 'Ping Healthchecks.io on completion')
   .action(async (out_path, options) => {
     console.log('get_csv');
     var sess;
@@ -219,6 +225,10 @@ program
           // write out object to csv file
           await fs_writeFile(path.join(out_path, filename), [].join.call(csvLines, '\n'));
         }
+      }
+
+      if (options.healthchecks) {
+        healthchecks();
       }
     } catch (err) {
       console.error(err);
@@ -279,6 +289,15 @@ program
     var mqttTopic = prompt('Enter the topic: ');
     conf.set('mqttTopic', mqttTopic);
     console.log('\nmqtt is now configured.');
+  });
+
+program
+  .command('config_healthchecks')
+  .description('Set up Healthchecks.io details')
+  .action(options => {
+    var uuid = prompt('Enter the Healthchecks.io uuid: ');
+    conf.set('healthchecks_uuid', uuid);
+    console.log('\nhealthchecks is now configured.');
   });
 
 program.parse(process.argv);
@@ -434,4 +453,13 @@ async function gunCashImport(transactions) {
     console.log('[GnuCash Import] The exit code was: ' + code);
     console.log('[GnuCash Import] The exit signal was: ' + signal);
   });
+}
+
+function healthchecks() {
+  if (conf.has('healthchecks_uuid')) {
+    const https = require('https');
+    https.get('https://hc-ping.com/' + conf.get('healthchecks_uuid')).on('error', (err) => {
+        console.log('Healthchecks.io Ping failed: ' + err)
+    });
+  }
 }

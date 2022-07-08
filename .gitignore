@@ -1,5 +1,6 @@
 *.ofx
 *.png
+error*.html
 .DS_Store
 export/
 node_modules
