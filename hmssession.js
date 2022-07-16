@@ -52,7 +52,7 @@ class Session {
     // TODO: check div#falshMessage has contents 'CSV upload complete'
     const result = await this.page.$eval('div#flashMessage', el => el.textContent);
     if (result != 'CSV upload complete') {
-      const screenshotFile = './uplaod_error.png';
+      const screenshotFile = './upload_error.png';
       await this.page.screenshot({path: screenshotFile});
       throw `File upload failed with message "${result}" on page ${this.page.url()}. Screenshot saved to ${screenshotFile}.`;
     }
