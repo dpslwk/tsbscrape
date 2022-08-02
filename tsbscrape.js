@@ -52,7 +52,7 @@ program
   .description('Fetch latest transactions and upload to hms2')
   .option('-b, --bypassssl', 'Bypass ssl checks.')
   .option('-g, --gnucash', 'Also import records into GnuCash')
-  .option('-p, --healthcheck', 'Ping Healthchecks.io on completion')
+  .option('-p, --healthchecks', 'Ping Healthchecks.io on completion')
   .action(async (options) => {
     console.log('hms2_upload');
     if (options.bypassssl) {
@@ -179,7 +179,7 @@ program
   .command('get_csv <out_path>')
   .description('Fetch .csv files for all accounts into out_path')
   .option('-m, --match', 'Include Transfer Account matches in csv output.')
-  .option('-p, --healthcheck', 'Ping Healthchecks.io on completion')
+  .option('-p, --healthchecks', 'Ping Healthchecks.io on completion')
   .action(async (out_path, options) => {
     console.log('get_csv');
     var sess;
