@@ -173,7 +173,7 @@ class Session {
     client.on('message', function (topic, payload) {
       // no need to match the topic since we only subscribe to one
 
-      // nh/nexmo/inbound {"msisdn":"447786865330","to":"447451289557","messageId":"17000002A882066F","text":"171080","type":"text","keyword":"171080","api-key":"34f64b65","message-timestamp":"2021-03-10 09:10:09"}
+      // nh/nexmo/inbound {"msisdn":"4477xxxxx330","to":"4474xxxx557","messageId":"17000002A882066F","text":"171080","type":"text","keyword":"171080","api-key":"34f64b65","message-timestamp":"2021-03-10 09:10:09"}
 
       // payload is Buffer
       // console.log(payload.toString());
@@ -182,6 +182,17 @@ class Session {
       // parse out the OTP
       const regex = /\d{6}/gm;
       const found = sms.text.match(regex);
+
+      if (found != null) {
+        // and pass this over to loginSMSOTP??
+        found.forEach(otp => wq.push(otp));
+
+        client.end();
+      }
+
+      // aaisp voip
+      // nh/nexmo/inbound {"scts":"2022-09-15T12:21:03+0100","oa":"+4477xxxxx330","da":"+44745xxxxx01","ud":"Here is your One Time Password to log in to TSB Internet Banking. Never share it, even with TSB. Please use  101705"}
+      const found = sms.ud.match(regex);
 
       if (found != null) {
         // and pass this over to loginSMSOTP??

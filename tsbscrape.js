@@ -370,6 +370,7 @@ function matchTransferAccount(description) {
     'FAIR': 'Assets:Current Assets:FairFX',
     'WATER PLUS': 'Expenses:Utilities:Water',
     'EVENTBRITE INC': 'Income:Workshops:Eventbright',
+    'EVENTBRITE OPERATI': 'Income:Workshops:Eventbright',
     'SNACKSPACE': 'Income:Snackspace',
     'SNACK-EX': 'Income:Snackspace',
     'GREEN FESTIVAL': 'Expenses:Teams:Events',
