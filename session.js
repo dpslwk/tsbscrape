@@ -181,7 +181,7 @@ class Session {
       // console.log(sms);
       // parse out the OTP
       const regex = /\d{6}/gm;
-      const found = sms.text.match(regex);
+      let found = sms.text.match(regex);
 
       if (found != null) {
         // and pass this over to loginSMSOTP??
@@ -192,7 +192,7 @@ class Session {
 
       // aaisp voip
       // nh/nexmo/inbound {"scts":"2022-09-15T12:21:03+0100","oa":"+4477xxxxx330","da":"+44745xxxxx01","ud":"Here is your One Time Password to log in to TSB Internet Banking. Never share it, even with TSB. Please use  101705"}
-      const found = sms.ud.match(regex);
+      found = sms.ud.match(regex);
 
       if (found != null) {
         // and pass this over to loginSMSOTP??
