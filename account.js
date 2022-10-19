@@ -16,7 +16,15 @@ module.exports = class Account {
     // Switch the page to this account.
     // Call `await this.session.home()` to reset state when you're done.
     console.log('Selecting account ' + this.number);
-    await this.page.$eval('a[ng-click="goToStatements(data)"]', el => el.click());
+    // await this.page.$eval('a[ng-click="goToStatements(data)"]', el => el.click());
+    // await this.page.click('a[ng-click="goToStatements(data)"]');
+    await this.page.evaluate(async function goToStatements() {
+        function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        await sleep(10);
+        angular.element(document.querySelector('a[ng-click="goToStatements(data)"]')).triggerHandler('click');
+    });
     // waitForNavigation seems to stall indefinitely here (?!) so we don't use u.click
     await u.wait(this.page, '#statementComponentsId');
   }
@@ -63,7 +71,8 @@ module.exports = class Account {
 
         let startBalance = document.querySelector('table[class="table table-std"] tbody tr:last-child').childNodes[5].innerText;
         let newBlanace = startBalance;
-        document.querySelector('a[action="previous"]').click();
+        // document.querySelector('a[action="previous"]').click();
+        angular.element(document.querySelector('a[action="previous"]')).triggerHandler('click');
         do{
           await sleep(100);
           newBlanace = document.querySelector('table[class="table table-std"] tbody tr:last-child').childNodes[5].innerText;
