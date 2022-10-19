@@ -27,6 +27,9 @@ class Session {
     // Stage 1 of login - enter username.
     await u.wait(this.page, '#credentialsPublicBiz > div:nth-child(2) > div > form > div.row.no-margin.section-lightblue > proteo-ui-form-group > div > ng-transclude > proteo-ui-form-control > div > ng-transclude > input');
     await sleep(500);
+
+    await this.page.click('#privacy-accept-button');
+
     await u.fillFields(this.page, {
       '#credentialsPublicBiz > div:nth-child(2) > div > form > div.row.no-margin.section-lightblue > proteo-ui-form-group > div > ng-transclude > proteo-ui-form-control > div > ng-transclude > input': credentials['username'],
     });
@@ -57,9 +60,22 @@ class Session {
 
     await u.wait(this.page, selector);
     const sel = await this.page.$(selector);
-
     if (sel) {
-      await this.page.$eval(selector, el => { el.click() });
+      // await this.page.$eval(selector, el => { el.click() });
+
+      async function clickOnElement(page, elem, x = null, y = null) {
+        const rect = await page.evaluate(el => {
+          const { top, left, width, height } = el.getBoundingClientRect();
+          return { top, left, width, height };
+        }, elem);
+
+        // Use given position or default to center
+        const _x = x !== null ? x : rect.width / 2;
+        const _y = y !== null ? y : rect.height / 2;
+
+        await page.mouse.click(rect.left + _x, rect.top + _y);
+      }
+      await clickOnElement(this.page, sel);
     }
 
     // sumbit
