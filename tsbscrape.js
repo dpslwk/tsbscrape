@@ -380,7 +380,8 @@ function matchTransferAccount(description) {
     'STRIPE STRIPE': 'Assets:Current Assets:Stripe',
     'TV LICENCE': 'Expenses:Teams:Trustees Misc',
     'ADYEN N.V. REFERENCE': 'Income:Donations:GoFundMe PPE',
-    'HSNOTTSPPE': 'Expenses:Miscellaneous:GoFundMe PPE'
+    'HSNOTTSPPE': 'Expenses:Miscellaneous:GoFundMe PPE',
+    'ANDREWS&ARNOLD': 'Expenses:Teams:Network and Servers'
   };
 
   for (var pattern in patterns) {
