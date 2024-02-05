@@ -97,7 +97,7 @@ class Session {
     await this.page.$eval('button[ng-click="checkValidation()"]', el => { el.click() });
 
     // need to give the damn modal time to show
-    await this.page.waitForTimeout(3000);
+    await new Promise(r => setTimeout(r, 3000));
     await u.wait(this.page, 'button[ng-click="dontTrust()"]');
     await u.click(this.page, 'button[ng-click="dontTrust()"]');
     console.log("Stage OTP login complete");

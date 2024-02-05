@@ -26,7 +26,7 @@
     "configstore": "^4.0.0",
     "log-timestamp": "^0.3.0",
     "mqtt": "^4.3.7",
-    "puppeteer": "^15.3.0",
+    "puppeteer": "^22.0.0",
     "python-shell": "^1.0.8",
     "syncprompt": "^2.0.0",
     "wait-queue": "^1.1.4"
