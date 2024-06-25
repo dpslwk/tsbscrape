@@ -275,6 +275,8 @@ program
   .action(options => {
     var gnuCashImport = prompt('Enter full path for tsb-import.py: ');
     conf.set('gnuCashImport', gnuCashImport);
+    var pythonPath = prompt('Enter full path for python venv: ');
+    conf.set('pythonPath', pythonPath);
     console.log('\ngnucash-imports is now configured.');
   });
 
@@ -435,6 +437,7 @@ async function gunCashImport(transactions) {
   let options = {
     mode: 'json',
     pythonOptions: ['-u'] // get print results in real-time
+    pythonPath: conf.get('pythonPath')
   };
 
   let gnuCashImport = new PythonShell(conf.get('gnuCashImport'), options);
