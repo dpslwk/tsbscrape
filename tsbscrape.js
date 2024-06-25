@@ -436,7 +436,7 @@ async function gunCashImport(transactions) {
 
   let options = {
     mode: 'json',
-    pythonOptions: ['-u'] // get print results in real-time
+    pythonOptions: ['-u'], // get print results in real-time
     pythonPath: conf.get('pythonPath')
   };
 
