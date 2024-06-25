@@ -361,6 +361,8 @@ function matchTransferAccount(description) {
     'BOC MANCHESTER': 'Expenses:BOC Gas',
     'NOTTM CITY COUNC': 'Expenses:Utilities:Business Rates',
     'PLANER INDUCTION': 'Income:Inductions:Planer Thicknesser',
+    'EM INDUCTION': 'Income:Inductions:Embroidery Induction',
+    'LASER INDUCTION': 'Income:Inductions:Laser Induction',
     'BIZSPACE REFERENCE': 'Expenses:Bizspace Rent:F6',
     'BIZSPACE LIMITED REFERENCE': 'Expenses:Bizspace Rent:F6',
     'NOTTINGHAM CLIFTON': 'Assets:Current Assets:Petty Cash',
