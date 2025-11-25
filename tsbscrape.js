@@ -365,6 +365,7 @@ function matchTransferAccount(description) {
     'PLANER INDUCTION': 'Income:Inductions:Planer Thicknesser',
     'EM INDUCTION': 'Income:Inductions:Embroidery Induction',
     'LASER INDUCTION': 'Income:Inductions:Laser Induction',
+    'LASER INDUCT': 'Income:Inductions:Laser Induction',
     'BIZSPACE REFERENCE': 'Expenses:Bizspace Rent:F6',
     'BIZSPACE LIMITED REFERENCE': 'Expenses:Bizspace Rent:F6',
     'NOTTINGHAM CLIFTON': 'Assets:Current Assets:Petty Cash',
@@ -387,6 +388,9 @@ function matchTransferAccount(description) {
     'ADYEN N.V. REFERENCE': 'Income:Donations:GoFundMe PPE',
     'HSNOTTSPPE': 'Expenses:Miscellaneous:GoFundMe PPE',
     'ANDREWS&ARNOLD': 'Expenses:Teams:Network and Servers'
+    ' RE-ACTIVATION': 'Income:Donations',
+    'DONATION BOT': 'Income:Donations',
+    'DONATION': 'Income:Donations',
   };
 
   for (var pattern in patterns) {
