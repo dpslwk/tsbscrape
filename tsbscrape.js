@@ -372,6 +372,7 @@ function matchTransferAccount(description) {
     'HMRC - ACCOUNTS': 'Expenses:Member Loan Repayments:Tax on Interest',
     'DEPOSIT OF CASH': 'Assets:Current Assets:Petty Cash',
     'FAIR': 'Assets:Current Assets:FairFX',
+    'EQUALS': 'Assets:Current Assets:Equals Money',
     'WATER PLUS': 'Expenses:Utilities:Water',
     'EVENTBRITE INC': 'Income:Workshops:Eventbright',
     'EVENTBRITE OPERATI': 'Income:Workshops:Eventbright',
