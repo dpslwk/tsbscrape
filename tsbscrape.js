@@ -387,8 +387,8 @@ function matchTransferAccount(description) {
     'TV LICENCE': 'Expenses:Teams:Trustees Misc',
     'ADYEN N.V. REFERENCE': 'Income:Donations:GoFundMe PPE',
     'HSNOTTSPPE': 'Expenses:Miscellaneous:GoFundMe PPE',
-    'ANDREWS&ARNOLD': 'Expenses:Teams:Network and Servers'
-    ' RE-ACTIVATION': 'Income:Donations',
+    'ANDREWS&ARNOLD': 'Expenses:Teams:Network and Servers',
+    ' RE-ACTIVATION': 'Income:Donations:Membership Payments',
     'DONATION BOT': 'Income:Donations',
     'DONATION': 'Income:Donations',
   };
